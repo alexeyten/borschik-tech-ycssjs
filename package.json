@@ -1,6 +1,19 @@
 {
-  "name": "borschik-tech-ycssjs",
-  "version": "0.0.1",
-  "description": "ycssjs tech",
-  "author": "Alexey Ten (Lynn) <lynn@yandex-team.ru>"
+    "name": "borschik-tech-ycssjs",
+    "version": "0.0.1",
+    "description": "ycssjs tech for borschik",
+    "author": {
+        "name": "Alexey Ten (Lynn)",
+        "email": "alexeyten@gmail.com"
+    },
+    "bugs": {
+        "url": "https://github.com/alexeyten/borschik-tech-ycssjs/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/alexeyten/borschik-tech-ycssjs.git"
+    },
+    "peerDependencies": {
+        "borschik": "> 0.2.4"
+    }
 }
