@@ -1,41 +1,49 @@
-var base = require('borschik').getTech('js');
+exports = module.exports = function ycssjs(borschik) {
+    var base = borschik.getTech('js');
 
-exports.Tech = base.Tech._inherit({
+    if (exports.Tech) {
+        return exports;
+    }
 
-    File: exports.File = base.File._inherit({
+    exports.Tech = base.Tech._inherit({
 
-        parseInclude: function(content) {
+        File: exports.File = base.File._inherit({
 
-            if (Buffer.isBuffer(content)) content = content.toString('utf8');
+            parseInclude: function(content) {
 
-            var re = /include\s*\(\s*["']([^"']+)["']\s*\)\s*;/g;
-            var uniqStr = '\00borschik\00';
-            var _this = this;
+                if (Buffer.isBuffer(content)) content = content.toString('utf8');
 
-            var includes = [],
-                texts = content
-                    .replace(re, function(_, file) {
+                var re = /include\s*\(\s*["']([^"']+)["']\s*\)\s*;/g;
+                var uniqStr = '\00borschik\00';
+                var _this = this;
 
-                        includes.push({
-                            file: _this.pathTo(file),
-                            type: 'comment'
-                        });
+                var includes = [],
+                    texts = content
+                        .replace(re, function(_, file) {
 
-                        return uniqStr;
+                            includes.push({
+                                file: _this.pathTo(file),
+                                type: 'comment'
+                            });
 
-                    })
-                    .split(uniqStr);
+                            return uniqStr;
 
-            // zip texts and includes
-            var res = [], t, i;
-            while((t = texts.shift()) != null) {
-                t && res.push(t);
-                (i = includes.shift()) && res.push(i);
+                        })
+                        .split(uniqStr);
+
+                // zip texts and includes
+                var res = [], t, i;
+                while((t = texts.shift()) != null) {
+                    t && res.push(t);
+                    (i = includes.shift()) && res.push(i);
+                }
+
+                return res;
+
             }
 
-            return res;
+        })
+    });
 
-        }
-
-    })
-});
+    return exports;
+}
