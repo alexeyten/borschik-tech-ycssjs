@@ -1,6 +1,6 @@
 {
     "name": "borschik-tech-ycssjs",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "ycssjs tech for borschik",
     "author": {
         "name": "Alexey Ten (Lynn)",
@@ -14,6 +14,6 @@
         "url": "git://github.com/alexeyten/borschik-tech-ycssjs.git"
     },
     "peerDependencies": {
-        "borschik": "> 0.2.4"
+        "borschik": "0.3.x"
     }
 }
